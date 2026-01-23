@@ -52,13 +52,13 @@ Once committed, teammates just need steps 1-2 - the adapter config syncs via git
 ### 4. Use it
 
 ```
-You: /tasks
+You: /bd
 Claude: Shows current ready tasks, offers to help plan work
 
-You: /tasks create Add user authentication
+You: /bd create Add user authentication
 Claude: Creates the task, adds to beads
 
-You: /tasks done beads-xxx-yyy
+You: /bd done beads-xxx-yyy
 Claude: Closes the task, shows what's now unblocked
 ```
 
@@ -67,7 +67,7 @@ Or just talk naturally - Claude will manage tasks in the background.
 ## How It Works
 
 ```
-~/.claude/skills/tasks/
+~/.claude/skills/bd/
 ├── SKILL.md              # Main skill - detects adapter, handles requests
 └── adapters/
     └── beads.md          # Beads-specific instructions
@@ -78,7 +78,7 @@ your-project/
     └── tasks-adapter     # Says "beads" (or "github", etc.)
 ```
 
-When you invoke `/tasks` or Claude detects task-related work:
+When you invoke `/bd` or Claude detects task-related work:
 1. Skill checks `.claude/tasks-adapter` for which backend to use
 2. Falls back to auto-detection (looks for `.beads/` directory)
 3. Loads adapter-specific instructions
@@ -88,17 +88,17 @@ When you invoke `/tasks` or Claude detects task-related work:
 
 | Command | Description |
 |---------|-------------|
-| `/tasks` or `/tasks ready` | Show actionable tasks |
-| `/tasks create <title>` | Create a new task |
-| `/tasks done <id>` | Mark task complete |
-| `/tasks plan <description>` | Break work into subtasks |
-| `/tasks sync` | Refresh task status |
+| `/bd` or `/bd ready` | Show actionable tasks |
+| `/bd create <title>` | Create a new task |
+| `/bd done <id>` | Mark task complete |
+| `/bd plan <description>` | Break work into subtasks |
+| `/bd sync` | Refresh task status |
 
 ## Swapping Backends
 
 To use a different task system:
 
-1. Create a new adapter in `~/.claude/skills/tasks/adapters/`
+1. Create a new adapter in `~/.claude/skills/bd/adapters/`
 2. Update `.claude/tasks-adapter` in your project
 3. That's it - the skill will use the new backend
 
