@@ -13,8 +13,10 @@ You are now operating with persistent task tracking enabled. This system maintai
 **Adapter check:**
 !`cat .claude/tasks-adapter 2>/dev/null || ([ -d .beads ] && echo "beads") || echo "none"`
 
-**Current tasks (if available):**
+**Current tasks (ready to work on):**
 !`bd ready --json 2>/dev/null || echo "[]"`
+
+^ Present these tasks to the user in a readable format (not raw JSON).
 
 ## Your Instructions
 
@@ -46,8 +48,9 @@ To set up beads: `bd init` then `echo "beads" > .claude/tasks-adapter`
 User's request: $ARGUMENTS
 
 **If no arguments or "ready" or "status":**
-- Show current ready tasks with `bd ready`
-- Briefly summarize what's actionable
+- Present the tasks from "Current tasks" section above in a clear, readable format
+- If the JSON is empty `[]`, say "No open tasks"
+- Summarize what's actionable and offer to help
 
 **If "create <title>" or similar:**
 - Create the task with `bd create`
