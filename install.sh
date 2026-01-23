@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install the Claude bd skill
+# Install the Claude bd skill (manual method)
 
 set -e
 
@@ -20,10 +20,10 @@ fi
 # Symlink or copy based on preference
 if [ "$1" = "--copy" ]; then
     echo "Copying skill to $SKILL_DIR..."
-    cp -r "$SCRIPT_DIR/skills/bd" "$SKILL_DIR"
+    cp -r "$SCRIPT_DIR/plugins/beads-tasks/skills/bd" "$SKILL_DIR"
 else
     echo "Symlinking skill to $SKILL_DIR..."
-    ln -s "$SCRIPT_DIR/skills/bd" "$SKILL_DIR"
+    ln -s "$SCRIPT_DIR/plugins/beads-tasks/skills/bd" "$SKILL_DIR"
 fi
 
 echo "Done! Skill installed at $SKILL_DIR"

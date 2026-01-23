@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "beads-tasks",
-      "source": ".",
+      "source": "./plugins/beads-tasks",
       "description": "Persistent task management using beads (swappable backends)",
       "version": "1.0.0"
     }
