@@ -1,0 +1,10 @@
+{
+  "name": "beads-tasks",
+  "description": "Persistent task management for Claude Code using beads (swappable backends)",
+  "version": "1.0.0",
+  "author": {
+    "name": "boka"
+  },
+  "repository": "https://github.com/YOUR_USERNAME/beads-claude-plugin",
+  "license": "MIT"
+}
