@@ -11,13 +11,13 @@ You are now operating with persistent task tracking enabled. This system maintai
 
 ## Detected Configuration
 
-**Adapter check:**
-!`cat .claude/tasks-adapter 2>/dev/null || ([ -d .beads ] && echo "beads") || echo "none"`
+**Adapter config:**
+!`cat .claude/tasks-adapter`
 
 **Current tasks (ready to work on):**
-!`bd ready --json 2>/dev/null || echo "[]"`
+!`bd ready`
 
-^ Present these tasks to the user in a readable format (not raw JSON).
+Present these tasks to the user in a readable format.
 
 ## Your Instructions
 
