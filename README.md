@@ -38,13 +38,16 @@ cd beads-claude-plugin
 
 </details>
 
-### 3. Initialize in your project
+### 3. Initialize in your project (one person per repo)
 
 ```bash
 cd your-project
 bd init
 mkdir -p .claude && echo "beads" > .claude/tasks-adapter
+git add .claude/tasks-adapter && git commit -m "Configure beads for task tracking"
 ```
+
+Once committed, teammates just need steps 1-2 - the adapter config syncs via git.
 
 ### 4. Use it
 
@@ -104,18 +107,6 @@ Planned adapters:
 - [ ] GitHub Issues
 - [ ] Linear
 - [ ] Jira
-
-## For Teams
-
-Each team member just runs:
-```
-/plugin marketplace add boka-slickage/beads-claude-plugin
-/plugin install beads-tasks
-```
-
-Then install beads CLI: `brew install beads`
-
-The `.claude/tasks-adapter` file is committed to your project repo, so everyone uses the same backend automatically.
 
 ## License
 
