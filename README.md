@@ -23,7 +23,7 @@ brew install beads
 In Claude Code:
 
 ```
-/plugin marketplace add YOUR_USERNAME/beads-claude-plugin
+/plugin marketplace add boka-slickage/beads-claude-plugin
 /plugin install beads-tasks
 ```
 
@@ -31,7 +31,7 @@ In Claude Code:
 <summary>Alternative: Manual install</summary>
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/beads-claude-plugin.git
+git clone https://github.com/boka-slickage/beads-claude-plugin.git
 cd beads-claude-plugin
 ./install.sh
 ```
@@ -109,7 +109,7 @@ Planned adapters:
 
 Each team member just runs:
 ```
-/plugin marketplace add YOUR_USERNAME/beads-claude-plugin
+/plugin marketplace add boka-slickage/beads-claude-plugin
 /plugin install beads-tasks
 ```
 
