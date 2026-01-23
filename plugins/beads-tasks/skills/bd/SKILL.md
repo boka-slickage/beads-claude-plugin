@@ -2,6 +2,7 @@
 name: bd
 description: Manage project tasks using beads persistent task tracking. Use this when starting a session to check pending work, or when planning/tracking tasks.
 argument-hint: "[command] [args] - e.g., 'ready', 'create Fix bug', 'done bd-xxx'"
+user-invocable: true
 ---
 
 # Task Management System
