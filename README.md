@@ -1,13 +1,13 @@
 # Claude Tasks Plugin
 
-A Claude Code skill that provides persistent task management across sessions using [beads](https://github.com/steveyegge/beads) (swappable for other backends).
+A Claude Code plugin that provides persistent task management across sessions using [beads](https://github.com/steveyegge/beads) (swappable for other backends).
 
 ## Why?
 
 - **Persistent memory**: Tasks survive session restarts and context compaction
 - **Zero friction**: Just talk to Claude naturally, it handles the bookkeeping
 - **Swappable**: Start with beads, switch to GitHub Issues or Linear later
-- **Shareable**: Coworkers can install the same skill
+- **Shareable**: Coworkers can install with one command
 
 ## Quick Start
 
@@ -18,7 +18,17 @@ brew install beads
 # or: npm install -g beads
 ```
 
-### 2. Clone and install the skill
+### 2. Install the plugin
+
+In Claude Code:
+
+```
+/plugin marketplace add YOUR_USERNAME/beads-claude-plugin
+/plugin install beads-tasks
+```
+
+<details>
+<summary>Alternative: Manual install</summary>
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/beads-claude-plugin.git
@@ -26,7 +36,7 @@ cd beads-claude-plugin
 ./install.sh
 ```
 
-This symlinks the skill to `~/.claude/skills/tasks/`. Use `./install.sh --copy` if you prefer a copy instead.
+</details>
 
 ### 3. Initialize in your project
 
@@ -97,10 +107,13 @@ Planned adapters:
 
 ## For Teams
 
-Each team member needs to:
-1. Install beads: `brew install beads`
-2. Clone this repo and run `./install.sh`
-3. That's it - `.beads/` syncs via git
+Each team member just runs:
+```
+/plugin marketplace add YOUR_USERNAME/beads-claude-plugin
+/plugin install beads-tasks
+```
+
+Then install beads CLI: `brew install beads`
 
 The `.claude/tasks-adapter` file is committed to your project repo, so everyone uses the same backend automatically.
 
