@@ -18,19 +18,15 @@ brew install beads
 # or: npm install -g beads
 ```
 
-### 2. Install the Claude skill
-
-Copy the skill to your Claude config:
+### 2. Clone and install the skill
 
 ```bash
-cp -r skills/tasks ~/.claude/skills/
+git clone https://github.com/YOUR_USERNAME/beads-claude-plugin.git
+cd beads-claude-plugin
+./install.sh
 ```
 
-Or symlink for easy updates:
-
-```bash
-ln -s $(pwd)/skills/tasks ~/.claude/skills/tasks
-```
+This symlinks the skill to `~/.claude/skills/tasks/`. Use `./install.sh --copy` if you prefer a copy instead.
 
 ### 3. Initialize in your project
 
@@ -101,12 +97,12 @@ Planned adapters:
 
 ## For Teams
 
-Each team member needs:
-1. The skill installed (`~/.claude/skills/tasks/`)
-2. beads CLI installed
+Each team member needs to:
+1. Install beads: `brew install beads`
+2. Clone this repo and run `./install.sh`
 3. That's it - `.beads/` syncs via git
 
-The `.claude/tasks-adapter` file is committed to the repo, so everyone uses the same backend automatically.
+The `.claude/tasks-adapter` file is committed to your project repo, so everyone uses the same backend automatically.
 
 ## License
 
