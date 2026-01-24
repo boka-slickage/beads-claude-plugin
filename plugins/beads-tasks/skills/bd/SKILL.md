@@ -75,11 +75,14 @@ Present these tasks to the user in a readable format.
 - `bd show <id>` - Show task details
 - `bd close <id>` - Mark task complete
 - `bd dep add <child> <parent>` - Add dependency (child is blocked by parent)
-- `bd edit <id>` - Edit task description (opens editor)
-- `bd edit <id> --acceptance` - Edit acceptance criteria
-- `bd edit <id> --design` - Edit design notes
+- `bd update <id> --description "text"` - Update description (non-interactive)
+- `bd update <id> --title "text"` - Update title
+- `bd update <id> --notes "text"` - Update notes
+- `bd update <id> --design "text"` - Update design notes
+- `bd update <id> --acceptance "text"` - Update acceptance criteria
+- `bd update <id> --status <status>` - Change status
 
-**Important:** The `bd edit` flags (`--description`, `--acceptance`, `--design`) are selectors for which field to edit, NOT string parameters. Do NOT use `--description="text"` syntax - it will fail. The command opens an interactive editor.
+**Important:** Use `bd update` for programmatic edits. Do NOT use `bd edit` - it opens an interactive editor which doesn't work in Claude Code.
 
 ## Handling the Request
 
