@@ -26,8 +26,6 @@ Based on the adapter detected above, follow the appropriate workflow:
 
 ### If adapter is "beads":
 
-Read and follow the beads adapter instructions from `~/.claude/skills/tasks/adapters/beads.md`.
-
 Key beads commands:
 - `bd ready` - Show tasks ready to work on (no blockers)
 - `bd list` - Show all open tasks
