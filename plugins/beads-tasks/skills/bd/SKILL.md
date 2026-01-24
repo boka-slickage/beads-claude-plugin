@@ -72,8 +72,10 @@ Present these tasks to the user in a readable format.
 - `bd ready` - Show tasks ready to work on (no blockers)
 - `bd list` - Show all open tasks
 - `bd create "Title" -p N` - Create task (P0=critical, P1=high, P2=normal)
+- `bd create "Title" --type <type>` - Types: bug, feature, task, chore
 - `bd show <id>` - Show task details
 - `bd close <id>` - Mark task complete
+- `bd close <id> --reason "what was done"` - Close with context
 - `bd dep add <child> <parent>` - Add dependency (child is blocked by parent)
 - `bd update <id> --description "text"` - Update description (non-interactive)
 - `bd update <id> --title "text"` - Update title
@@ -115,13 +117,30 @@ User's request: $ARGUMENTS
 - Run the setup flow above regardless of current state
 - Useful for reinitializing or troubleshooting
 
+## Proactive Task Tracking
+
+**IMPORTANT:** Any work that requires multiple steps or can't be finished immediately MUST be tracked in bd.
+
+- **bd tasks persist across sessions** - TodoWrite does not
+- When you identify multi-step work, create a bd task BEFORE starting
+- If the user asks for something complex, create the task first, then work on it
+- When you discover subtasks or blockers, create them in bd with dependencies
+
+**Examples of when to create tasks:**
+- User reports a bug → `bd create "Fix: <description>" --type bug`
+- Feature request → `bd create "Add: <feature>" --type feature`
+- Multi-file refactor → `bd create "Refactor: <scope>"` with subtasks
+- Investigation needed → `bd create "Investigate: <issue>"`
+
+**Do NOT rely solely on TodoWrite** for tracking work. TodoWrite is for in-session progress visibility. bd is for persistent tracking that survives context limits and session restarts.
+
 ## Workflow Integration
 
 When working on tasks:
 1. At session start, always run `bd ready` to see pending work
-2. Before starting work, mark the task you're working on (mention it)
-3. As you complete tasks, close them with `bd close`
-4. If you discover new work, create tasks for it
+2. Before starting work, create a bd task if one doesn't exist
+3. As you complete tasks, close them with `bd close --reason "what was done"`
+4. If you discover new work, create tasks for it immediately
 5. Keep the user informed of task status changes
 
 Remember: The goal is seamless task tracking. The user shouldn't need to think about the mechanics - just tell you what to do and you handle the bookkeeping.
