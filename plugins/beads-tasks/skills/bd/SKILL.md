@@ -75,6 +75,11 @@ Present these tasks to the user in a readable format.
 - `bd show <id>` - Show task details
 - `bd close <id>` - Mark task complete
 - `bd dep add <child> <parent>` - Add dependency (child is blocked by parent)
+- `bd edit <id>` - Edit task description (opens editor)
+- `bd edit <id> --acceptance` - Edit acceptance criteria
+- `bd edit <id> --design` - Edit design notes
+
+**Important:** The `bd edit` flags (`--description`, `--acceptance`, `--design`) are selectors for which field to edit, NOT string parameters. Do NOT use `--description="text"` syntax - it will fail. The command opens an interactive editor.
 
 ## Handling the Request
 
