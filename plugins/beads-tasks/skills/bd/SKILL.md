@@ -143,4 +143,41 @@ When working on tasks:
 4. If you discover new work, create tasks for it immediately
 5. Keep the user informed of task status changes
 
+## Troubleshooting
+
+### Always run bd from the project root
+`bd` walks up looking for `.beads/`. If you're not in the right directory, it silently fails or says "No .beads/ directory found". Always `cd` to the project root first.
+
+### After `brew upgrade beads` (daemon version mismatch)
+The background daemon keeps running the old version after a CLI upgrade. Symptoms: `bd create` fails, `bd list` returns nothing, `bd config set` appears to work but has no effect.
+
+Fix:
+```bash
+# Remove the stale daemon lock (new one starts automatically)
+rm -f .beads/daemon.lock
+
+# Remove any dolt crash locks
+rm -f .beads/dolt-access.lock .beads/dolt/beads/.dolt/noms/LOCK
+
+# Verify health
+bd doctor
+```
+
+### "database not initialized: issue_prefix config is missing"
+The dolt backend is empty or out of sync with the JSONL. Fix:
+```bash
+bd rename-prefix <prefix> --repair
+# <prefix> is the short ID used by existing issues (e.g. "fulcrum" for "fulcrum-abc")
+```
+This syncs JSONL → dolt and consolidates any prefix collisions.
+
+### `bd config set issue-prefix` doesn't fix the above
+`bd config` writes to SQLite (ephemeral layer). `bd create` validates against the dolt backend's internal config. They are separate stores — use `rename-prefix --repair` instead.
+
+### Stale lock files blocking database access
+```bash
+bd doctor --fix --yes   # removes dolt-access.lock automatically
+rm -f .beads/dolt/beads/.dolt/noms/LOCK   # must be removed manually
+```
+
 Remember: The goal is seamless task tracking. The user shouldn't need to think about the mechanics - just tell you what to do and you handle the bookkeeping.
