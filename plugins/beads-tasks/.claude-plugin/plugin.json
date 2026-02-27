@@ -1,7 +1,7 @@
 {
   "name": "beads-tasks",
   "description": "Persistent task management for Claude Code using beads (swappable backends)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "boka"
   },
